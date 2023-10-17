@@ -1,1 +1,1 @@
-# attack-and-defense
+# NCU ADL CTF 2023
