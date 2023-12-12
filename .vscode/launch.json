@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/linchunho/Developer/adl-ctf/project01/07_shellcode3",
-      "program": "/Users/linchunho/Developer/adl-ctf/project01/07_shellcode3/build/Debug/outDebug"
+      "cwd": "/Users/linchunho/Developer/adl-ctf/project01/06_shellcode2",
+      "program": "/Users/linchunho/Developer/adl-ctf/project01/06_shellcode2/build/Debug/outDebug"
     }
   ]
 }
