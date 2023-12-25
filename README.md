@@ -2,6 +2,7 @@
 
 - link: [ctf.adl](http://ctf.adl.tw/)
 - useful tool: [IDA](https://hex-rays.com/IDA-pro/)
+- Course link: [2023 攻防上課影片](https://www.youtube.com/playlist?list=PLZo_s9SaDRuf_Z374OvZne8MG1rn0WuXz)
 
 
 ```shell
