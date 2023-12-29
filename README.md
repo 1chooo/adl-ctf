@@ -6,8 +6,11 @@
 
 
 ```shell
-$ pip install pwntools
+$ python3 -m pip install pwntools
+$ python3 -m pip install requests
+$ python3 -m pip install beautifulsoup4
 ```
+
 `ubuntu 22.04`
 
 ## License
