@@ -22,7 +22,21 @@ def send_json_to_form(json_data):
         print("An exception occurred:", e)
 
 # JSON data to send
+'''
+is_input_safe
+'''
 json_to_send = '{"tenshi": "Ijichi Nijika", "bocchi": "Goto Hitor-"}'
+json_to_send = '{"bocchi": "Goto Hitor-"}'
+
+'''
+is_input_safe but not show anything in <pre> tag
+'''
+json_to_send = '{"tenshi": "Ijichi Nijika", %%"bocchi"%%: "Goto Hitor-"}'
+json_to_send = '{"tenshi": "Ijichi Nijika", %%"bocchi"%%```: "Goto Hitor-"'
+json_to_send = '{"tenshi": "Ijichi Nijika", %%"bocchi"%%```: "Goto Hitor-"'
+json_to_send = '{bocchi: "Goto Hitori"}'
+json_to_send = '{bocchi: Goto Hitori}'
+json_to_send = '{"bocchi": "Goto Hitor-"}'
 
 # Call the function to send JSON data to the form
 send_json_to_form(json_to_send)
