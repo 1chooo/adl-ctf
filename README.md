@@ -9,6 +9,7 @@
 $ python3 -m pip install pwntools
 $ python3 -m pip install requests
 $ python3 -m pip install beautifulsoup4
+$ python3 -m pip install fake-useragent
 ```
 
 `ubuntu 22.04`
