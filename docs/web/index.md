@@ -3,8 +3,8 @@
 <div align="right">
     <p>
         <a href="https://1chooo.github.io/ctf-writeup/"><b>👨🏻‍💻 Home</b></a> |
-        <a href="https://1chooo.github.io/ctf-writeup/pwn/"><b><code>🌤️ pwn</code></b></a> |
-        <a href="https://1chooo.github.io/ctf-writeup/web/"><b><code>⌨️ web</code></b></a> |
+        <a href="https://1chooo.github.io/ctf-writeup/pwn/"><b>🔒 <code>pwn</code></b></a> |
+        <a href="https://1chooo.github.io/ctf-writeup/web/"><b>🌏 <code>web</code></b></a> |
         <a href="https://github.com/1chooo/ctf-writeup"><b>⌚️ GitHub</b></a>
     </p>
 </div>
@@ -98,13 +98,13 @@
 
 因為從題目中我們可以看到，`cat` 和 `flag` 都在黑名單中，因此如果我們直接注入 `{"bocchi":"'`cat flag`'"}` 會得不到我們要的內容，會被原始碼裡的程式邏輯給擋掉，因此我們先嘗試了 `{"tenshi": "Ijichi Nijika", %%"bocchi"%%: "Goto Hitor-"}` 發現不會進到 else 但是也無法成功注入，後來我們找到了 Keyword 繞過的方法，在 `cat` 以及 `flag` 之中添加一些可以繞過的字串，也就是說還是會組成 `cat flag` 但是中間加上的字元會被繞過，因此我們最後注入的 payload 為：
 
-1. `{"tenshi": "Ijichi Nijika", "bocchi":"'`tac f[l]ag`'"}`
-2. `{"bocchi":"'`tac f[l]ag`'"}`
-3. `{"bocchi":"'`c""at fl""ag`'"}`
-4. `{"bocchi":"'`c\at fl\ag"}` (Not Successful)
+1. <code>{"tenshi": "Ijichi Nijika", "bocchi":"'`tac f[l]ag`'"}</code>
+2. <code>{"bocchi":"'`tac f[l]ag`'"}</code>
+3. <code>{"bocchi":"'`c""at fl""ag`'"}</code>
+4. <code>{"bocchi":"'`c\at fl\ag"}</code> (Not Successful)
 
 我們也試過把 `cat` 給相反過來，並且在 `flag` 使用 keyword 繞過，也是有成功拿到 flag，注入的 payload 為：
-1. `{"bocchi":"'`tac f[l]ag`'"}`
+1. <code>{"bocchi":"'`tac f[l]ag`'"}</code>
 
 並且寫了一個 Python Script 來做注入，最後成功拿到 flag。
 
