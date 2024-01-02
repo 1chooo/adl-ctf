@@ -1,13 +1,15 @@
-# 2023 NCU ADL CTF Writeup --- `web`
+# 2023 NCU ADL CTF Writeups --- `web`
 
 <div align="right">
     <p>
-        <a href="https://1chooo.github.io/ctf-writeup/"><b>👨🏻‍💻 Home</b></a> |
-        <a href="https://1chooo.github.io/ctf-writeup/pwn/"><b>🔒 <code>pwn</code></b></a> |
-        <a href="https://1chooo.github.io/ctf-writeup/web/"><b>🌏 <code>web</code></b></a> |
-        <a href="https://github.com/1chooo/ctf-writeup"><b>⌚️ GitHub</b></a>
+        <a href="https://1chooo.github.io/ctf-writeups/"><b>👨🏻‍💻 Home</b></a> |
+        <a href="https://1chooo.github.io/ctf-writeups/pwn/"><b>🔒 <code>pwn</code></b></a> |
+        <a href="https://1chooo.github.io/ctf-writeups/web/"><b>🌏 <code>web</code></b></a> |
+        <a href="https://github.com/1chooo/ctf-writeups/web/"><b>⌚️ GitHub</b></a>
     </p>
 </div>
+
+## 01. Monster
 
 ## 05. Command Injection
 
