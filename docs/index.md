@@ -1,5 +1,14 @@
 # 2023 NCU ADL CTF Writeup
 
+<div align="right">
+    <p>
+        <a href="https://1chooo.github.io/ctf-writeup/"><b>👨🏻‍💻 Home</b></a> |
+        <a href="https://1chooo.github.io/ctf-writeup/pwn/"><b><code>🌤️ pwn</code></b></a> |
+        <a href="https://1chooo.github.io/ctf-writeup/web/"><b><code>⌨️ web</code></b></a> |
+        <a href="https://github.com/1chooo/ctf-writeup"><b>⌚️ GitHub</b></a>
+    </p>
+</div>
+
 - link: [ctf.adl](http://ctf.adl.tw/)
 - useful tool: [IDA](https://hex-rays.com/IDA-pro/)
 - Course link: [2023 攻防上課影片](https://www.youtube.com/playlist?list=PLZo_s9SaDRuf_Z374OvZne8MG1rn0WuXz)
@@ -13,14 +22,6 @@ $ python3 -m pip install fake-useragent
 ```
 
 `ubuntu 22.04` with AWS EC2
-
-<div align="right">
-    <p>
-        <a href="https://1chooo.github.io/ctf-writeup/"><b>👨🏻‍💻 Home</b></a> |
-        <a href="https://1chooo.github.io/ctf-writeup/pwn/"><b>🌤️ PWN</b></a> |
-        <a href="https://1chooo.github.io/ctf-writeup/web/"><b>⌨️ WEB</b></a>
-    </p>
-</div>
 
 ## CONTACT INFO.
 
