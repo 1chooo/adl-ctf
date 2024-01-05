@@ -56,12 +56,16 @@ If a significant portion of the source code is used, please provide a link back 
 <div align="center">
     <p>
         <a href="https://github.com/1chooo" target="_blank"><b>👨🏻 GitHub</b></a> |
+        <a href="https://www.linkedin.com/in/1chooo/" target="_blank"><b>👨🏻‍💻 Linkedin</b></a> |
         <a href="https://1chooo-github-io-1chooo.vercel.app/" target="_blank"><b>👨🏻‍💻 Portfolio</b></a> |
         <a href="https://1chooo.github.io/1chooo-blog/" target="_blank"><b>📓 Blog</b></a> |
-        <a href="https://1chooo-github-io-1chooo.vercel.app/resume" target="_blank"><b>🧳 Resume</b></a> |
+        <a href="https://1chooo.com/cv.pdf" target="_blank"><b>🧳 Resume</b></a> |
         <a href="https://medium.com/@1chooo" target="_blank"><b>📠 Medium</b></a> |
         <a href="https://www.youtube.com/channel/UCpBU1rXOfdTtxX939f_P_dA" target="_blank"><b>🎥 YouTube</b></a>
     </p>
+    <div>
+        <b>‘’𝘿𝙧𝙚𝙖𝙢𝙨 𝙘𝙤𝙢𝙚 𝙩𝙧𝙪𝙚, 𝙬𝙝𝙚𝙣 🫵🏻 𝙙𝙤𝙣’𝙩 𝙨𝙡𝙚𝙚𝙥…’’</b>
+    </div>
     <div>
         <b>©2023-2024  Hugo H. Lin</b>
     </div>
