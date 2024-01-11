@@ -33,11 +33,11 @@ $ python3 -m pip install fake-useragent
 
 ## `web`
 
-- [x] Monster
+- [x] [Monster](https://1chooo.github.io/ctf-writeups/web/#01-monster)
 - [x] flag_store
 - [x] Meow
 - [x] msg_board
-- [x] command injection
+- [x] [command injection](https://1chooo.github.io/ctf-writeups/web/#05-command-injection)
 - [x] SQL_Injection1
 - [x] SQL_Injection2
 
