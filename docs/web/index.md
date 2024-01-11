@@ -156,8 +156,8 @@ with open('rockyou.txt', 'r', encoding='latin-1') as rockyou:
 最後我們利用上面找到的帳號密碼來登入，並且使用 `GIVEMEFLAG` method ， `x-forwarded-for` 保持 `127.0.0.1.` 和 `referer`，並且把 `host` 改成 `www.adlSecurity.com`，再加上最後爆破出來的密碼，就可以拿到 flag。
 
 **這樣就拿到 flag 了！！！**
-<!-- ![](./imgs/01_monster/06.png) -->
 
+![](./imgs/01_monster/06.png)
 
 ## 03. Meow
     
