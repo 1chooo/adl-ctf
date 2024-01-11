@@ -2,13 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 
 
-headers = {
-    "Host": "140.115.59.7:12002",
-    # "Referer": "http://140.115.59.7:12002/",
-    "Referer": "https://www.adlSecurity.com", # Step 3
-    "X-Forwarded-For": "127.0.0.1"  # Step 2
-}
-
 def step_one():
     url = 'http://140.115.59.7:12002/'
 
