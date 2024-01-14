@@ -48,7 +48,7 @@ with open('rockyou.txt', 'r', encoding='latin-1') as rockyou:
             with open('output.txt', 'w') as output_file:
                 output_file.write(f"found password!: {line}\n")  # Write to file
             soup = BeautifulSoup(response.text, 'html.parser')
-            tag_content = soup.find('ADL').text.strip()
+            tag_content = soup.find('h1').text.strip()
             print("Content within tags:")
             print(tag_content)
 

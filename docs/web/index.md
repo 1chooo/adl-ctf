@@ -41,8 +41,6 @@ with open('index.html', 'w') as output_file:
 接著我們照著指示要把 `IP` 變成 `127.0.0.1.` 但是我們沒辦法直接透過 `Host` header 來改變 `IP`，因為會被擋掉，因此我們需要透過 `X-Forwarded-For` header 來改變 `IP`。
 
 ```py
-
-```py
 url = 'http://140.115.59.7:12002/'
 
 method = 'GIVEMEFLAG'
