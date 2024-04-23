@@ -1,3 +1,4 @@
+```php
 <?php
 isset($_GET['source']) and die(show_source(__FILE__, true));
 ?>
@@ -58,3 +59,4 @@ isset($_GET['source']) and die(show_source(__FILE__, true));
 </body>
 
 </html>
+```

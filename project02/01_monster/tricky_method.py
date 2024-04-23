@@ -3,9 +3,9 @@ import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import ReadTimeout, ConnectTimeout
 
-login_url = 'http://140.115.59.7:12002/admin'
+login_url = 'http://<host_server_ip>/admin'
 login_headers = {
-    "Host": "140.115.59.7:12002",
+    "Host": "<host_server_ip>",
     "Referer": "https://www.adlSecurity.com", # Step 3
     "X-Forwarded-For": "127.0.0.1",  # Step 2
     "Authorization": None,

@@ -1,14 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-
-headers = {
-    "Host": "<host_server_ip>",
-    # "Referer": "http://<host_server_ip>/",
-    "Referer": "https://www.adlSecurity.com", # Step 3
-    "X-Forwarded-For": "127.0.0.1"  # Step 2
-}
-
 def main():
     url = 'http://<host_server_ip>/'
 
@@ -16,8 +8,7 @@ def main():
 
     headers = {
         "Host": "<host_server_ip>",
-        # "Referer": "http://<host_server_ip>/",
-        "Referer": "https://www.adlSecurity.com", # Step 3
+        "Referer": "http://<host_server_ip>/",
         "X-Forwarded-For": "127.0.0.1"  # Step 2
     }
 
@@ -27,8 +18,14 @@ def main():
         headers=headers
     )
 
+    with open('index2.html', 'w') as output_file:
+        output_file.write(response.text)
+
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
-        tag_content = soup.find('h1').text.strip()
+        tag_content = soup.find('h1').text
         print("Content within <h1> tags:")
         print(tag_content)
+
+if __name__ == "__main__":
+    main()

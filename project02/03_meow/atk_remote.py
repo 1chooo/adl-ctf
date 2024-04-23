@@ -28,7 +28,7 @@ headers_score = {
     "Connection": "close"
 }
 
-data = [ [None for i in range(10)] for _ in range(10)]
+data = [ [None for _ in range(10)] for _ in range(10)]
 
 for i in range(10):
     for j in range(10):
